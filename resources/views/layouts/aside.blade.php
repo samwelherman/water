@@ -203,6 +203,35 @@
             </li>
             @endcan
             @can('manage-payroll')
+              <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                        data-feather="command"></i><span>School Management</span></a>
+                <ul class="dropdown-menu">
+                    @can('view-salary_template')
+                    <li><a class="nav-link" href="{{url('student')}}"> Student Registraion </a></li>
+                    @endcan
+
+                    @can('view-salary_template')
+                    <li><a class="nav-link" href="{{url('school')}}"> School Fees Registraion</a></li>
+                    @endcan
+
+                    @can('view-salary_template')
+                    <li><a class="nav-link" href="{{url('invoice_general')}}">Invoice Generation</a></li>
+                    @endcan
+
+                    @can('view-salary_template')
+                        <li><a class="nav-link" href="{{url('fees_collection')}}"> School Fees Collection</a></li>
+                        <li><a class="nav-link" href="{{url('fees_collection_list')}}">  School Fees Payment Views</a></li>
+                    
+                       
+                    
+                    
+                    @endcan
+                </ul>
+              </li>
+
+
+
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="command"></i><span>Payroll</span></a>
