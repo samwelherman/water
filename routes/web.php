@@ -466,6 +466,17 @@ Route::group(['prefix' => 'accounting'], function () {
 });
 
 
+//ROUTE FOR PARISH
+
+Route::group(['prefix' => 'parish'], function() {
+
+  Route::resource('community', 'Parish\CommunityController')->middleware('auth');
+  Route::resource('contribution', 'Parish\ContributionController')->middleware('auth');
+  Route::resource('member', 'Parish\ParishMemberController')->middleware('auth');
+
+
+}  );
+
 //route for payroll
 Route::group(['prefix' => 'payroll'], function () {
 

@@ -5,69 +5,85 @@
 <section class="section">
     <div class="section-body">
         <div class="row">
-
             <div class="col-12 col-sm-12 col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>School Fees Collection</h4>
+                        <h4>Community Registraion</h4>
                     </div>
                     <div class="card-body">
                         <!-- Tabs within a box -->
                         <ul class="nav nav-tabs">
                             <li class="nav-item"><a
                                     class="nav-link @if(empty($id)) active show @endif" href="#home2"
-                                    data-toggle="tab">Students List</a>
+                                    data-toggle="tab">Update Community</a>
                             </li>
                         </ul>
                         <div class="tab-content tab-bordered">
                             <!-- ************** general *************-->
+                           
                             <div class="tab-pane fade @if(empty($id)) active show @endif" id="home2">
-
-                                <div class="table-responsive">
-                                    <table class="table table-striped " id="table-1">
-                                        <thead>
-                                            <tr>
-                                                <th >#</th>
-                                                <th>Name</th>
-                                                <th>School Level</th>
-                                                <th>Class/Standard/Form</th>
-                                                <th>Registration Date</th>
-                                           
-                                                <th class="col-sm-3">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                              <?php
-
-use App\Models\School;
-
-                                                if (!empty($students)):foreach ($students as $row):
-                                                   $nname = School::where('id', $row->id)->value('name');
-                                               ?>
-                                                <tr class="gradeA even" role="row">
-                                                  <th>  </th>
-                                                   <td><?php echo $row->fname; ?>&nbsp<?php echo $row->mname; ?> &nbsp<?php echo $row->lname; ?> </td>
-                                                   <td><?php echo $row->level; ?> </td>
-                                                   <td><?php echo $row->class; ?> </td>
-                                                   <td><?php echo $row->yearStudy; ?> </td>
-                                                   <td><div class="form-inline">
-                                                <div class = "input-group"> 
-                                            <a href="{{ route('student.action', $row->id)}}" class="btn btn-outline-primary btn-xs" title="Fee Collection">Collect Fees</a> 
-                                        </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Edit Community</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12 ">
                                                 
-                             </div></td>      
-                                                               
-                                      </tr>
+                                            {{ Form::model($community, array('route' => array('community.update', $community->id),'role'=>'form','enctype'=>'multipart/form-data' ,'method' => 'PUT')) }}
+                                               
 
-                                        <?php endforeach; ?> 
+                                            <div class="form-group row">
+                                                    <label class="col-lg-2 col-form-label">Community Name</label>
+                                                    <div class="col-lg-8">
+                                                        <input type="text" name="name" required
+                                                            value="{{  old('name', $community->name) }}"
+                                                            class="form-control">
+                                                    </div>
+                                            </div>  
 
-                                        <?php endif; ?>
-                                   
-                                
-                                   </tbody>
-                                       
-                                    </table>
+                                            <div class="form-group row">
+                                                    <label class="col-lg-2 col-form-label">Chairman Name</label>
+                                                    <div class="col-lg-8">
+                                                        <input type="text" name="chairman" required
+                                                            value="{{  old('chairman', $community->chairman) }}"
+                                                            class="form-control">
+                                                    </div>
+                                            
+                                            </div>  
+                                            
+                                            <div class="form-group row">
+                                                    <label class="col-lg-2 col-form-label">Secretary Name</label>
+                                                    <div class="col-lg-8">
+                                                        <input type="text" name="secretary" required
+                                                            value="{{  old('secretary', $community->secretary) }}"
+                                                            class="form-control">
+                                                    </div>
+                                            </div>  
+
+                                            <div class="form-group row">
+                                                    <label class="col-lg-2 col-form-label">Community Location</label>
+                                                    <div class="col-lg-8">
+                                                        <input type="text" name="location" required
+                                                            value="{{  old('location', $community->location) }}"
+                                                            class="form-control">
+                                                    </div>
+                                            </div>
+                                            
+                                            <div class="btn-bottom-toolbar text-right">
+                                                                 
+                                                <button type="submit"
+                                                    class="btn btn-sm btn-primary">Updates</button>
+                                                    <button type="button" onclick="history.back()"
+                                                    class="btn btn-sm btn-danger">Cancel</button>
+                                                              
+                                            </div>
+                                                
+                                            
+                                                {!! Form::close() !!}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -93,7 +109,7 @@ use App\Models\School;
 <script type="text/javascript">
     function model(id, type) {
 
-        let url = '{{ route("student.action", ":id") }}';
+        let url = '{{ route("community.show", ":id") }}';
         url = url.replace(':id', id)
 
         $.ajax({

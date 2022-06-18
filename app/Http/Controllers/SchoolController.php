@@ -66,8 +66,10 @@ class SchoolController extends Controller
                 }
             }
 
-        return redirect()->route('school.index')->with('success', 'Saved Successfully');
-    }
+   
+            return redirect()->route('school.index')->with('success', 'Saved Successfully');
+   
+        }
 
     /**
      * Display the specified resource.
@@ -148,7 +150,9 @@ class SchoolController extends Controller
             }
         }
 
+   
         return redirect()->route('school.index')->with('success', 'Updated Successfully');
+   
     }
 
     /**
@@ -165,5 +169,6 @@ class SchoolController extends Controller
         $school->delete();
 
         return redirect()->route('school.index')->with('success', 'Deleted Successfully');
+   
     }
 }

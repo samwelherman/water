@@ -231,6 +231,20 @@
               </li>
 
 
+              <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                        data-feather="command"></i><span>Parish</span></a>
+                <ul class="dropdown-menu">
+                    @can('view-salary_template')
+                    <li><a class="nav-link" href="{{url('parish/community')}}"> Manage Community</a></li>
+                    @endcan
+                    @can('view-manage_salary')
+                    <li><a class="nav-link" href="{{url('parish/member')}}"> Manage Member</a></li>
+                    @endcan
+
+                </ul>
+
+              </li>
 
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
