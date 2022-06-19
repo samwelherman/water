@@ -265,6 +265,7 @@ class SalaryTemplateController extends Controller
           $salary_allowance_info=SalaryAllowance::where('salary_template_id',$id)->get();
           $salary_deduction_info=SalaryDeduction::where('salary_template_id',$id)->get();
                     return view('payroll.salary_template_details',compact('salary_template_info','salary_deduction_info','salary_allowance_info','id'));
+                   
                     break;
 
             case 'employee':
@@ -451,7 +452,9 @@ $salary_allowance_info=SalaryAllowance::where('salary_template_id',$id)->get();
                             $allowance_id = $salary_allowance_id[$key];
                             SalaryAllowance::where('salary_allowance_id',$allowance_id)->update($salary_allowance_data);
                             //$this->payroll_model->save($salary_allowance_data, $allowance_id);
-                        } else {
+                       
+                        }
+                         else {
                             SalaryAllowance::create($salary_allowance_data);
                             //$this->payroll_model->save($salary_allowance_data);
                         }
@@ -582,5 +585,6 @@ $salary_allowance_info=SalaryAllowance::where('salary_template_id',$id)->get();
 
        $salary_template_id->delete();
         return redirect(route('salary_template.index'))->with(['success'=>'Deleted Successfully']);
+    
     }
 }

@@ -32,5 +32,4 @@ Route::group(['middleware'=>['auth:sanctum']],function () {
     Route::resource('truck_management','Api_controllers\Logistic\Truck_Management_ApiController');
     Route::resource('driver_management','Api_controllers\Logistic\Driver_Management_ApiController');
     Route::resource('fuel_management','Api_controllers\Logistic\Fuel_Management_ApiController');
-    Route::resource('manipulation','Orders_Client_ManipulationsController');
 });
