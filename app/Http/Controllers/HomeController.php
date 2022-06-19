@@ -33,22 +33,13 @@ class HomeController extends Controller
     {
          $monthly_actual_expected_data = [];
          
-        //  whereMonth('created_at', date('m'))
-        //  $invoice = Payment::selectRaw('year(created_at) as year, monthname(created_at) as month, sum(total_amount) as total_sale')
-        //     ->groupBy('year','month')
-        //     ->orderByRaw('min(created_at) desc')
-        //     ->get();
         $months = array(1 => 'Jan.', 2 => 'Feb.', 3 => 'Mar.', 4 => 'Apr.', 5 => 'May', 6 => 'Jun.', 7 => 'Jul.', 8 => 'Aug.', 9 => 'Sep.', 10 => 'Oct.', 11 => 'Nov.', 12 => 'Dec.');
         for($i=1; $i<13; $i++){
-           $monthNum  = $i;
-           $dateObj   = DateTime::createFromFormat('!m', $monthNum);
-           //$month = $dateObj->format('F');
-           $month = 02;
-           
+
                 array_push($monthly_actual_expected_data, array(
                 'month' => $months[$i],
-                'cash' => JournalEntry::where('center_id','!=',null)->whereMonth('created_at', date("m", $month))->sum('debit'),
-                'value_village' => PurchaseCotton::whereMonth('created_at', date("m", $month))->sum('purchase_amount')
+                'customer' => 20,
+                'meter' => 30,
             ));
             
         }
@@ -61,7 +52,7 @@ class HomeController extends Controller
         $cash_issued = JournalEntry::where('center_id','!=',null)->sum('debit');
         $district = District::all();
         $cotton_collected = PurchaseCotton::sum('quantity');
-        $balance = CottonMovement::sum('quantity') -  ProductionActivity::where('type',3)->sum('production_quantity');
+        $balance = CottonMovement::sum('quantity') -  10;
         $costants = Costants::all()->first();
         $expected['raw'] =10;
         $expected['dust'] = 2;

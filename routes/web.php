@@ -46,6 +46,12 @@ Route::group(['prefix'=>'farmer'],function()
 
 //my rooot
 
+//cards management 
+Route::resource('manage_cards', 'Cards\ManageCardsController');
+Route::resource('card_deposit', 'Cards\DepositController');
+Route::resource('member_card_deposit', 'Cards\MemberDepositController'); 
+Route::resource('manage_member', 'Members\ManageMemberController');
+
 
 // start farming routes
 Route::resource('/farming_cost','farming\Farming_costController')->middleware('auth');
