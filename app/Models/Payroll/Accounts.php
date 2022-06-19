@@ -13,7 +13,9 @@ class Accounts extends Model
 
     protected $primaryKey = "account_id";
 
+
     protected $fillable = ['account_id','account_name','description','balance','account_number','contact_person','contact_phone','bank_details','permission'];
+
 }
 
 

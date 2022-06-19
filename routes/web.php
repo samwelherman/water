@@ -14,7 +14,8 @@ use App\Http\Controller\SalesController;
 use App\Http\Controller\Single_warehouseController;
 use App\Http\Controller\Orders_Client_ManipulationsController;
 use App\Http\Controller\Warehouse_backendController;
-
+use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\StudentController;
 //use ;
 use App\Models\Counter;
 /*
@@ -42,6 +43,28 @@ Route::group(['prefix'=>'farmer'],function()
     Route::get('register','FarmerController@register')->middleware('auth');
 })->middleware('auth');
 */
+
+//raja roots
+
+Route::group(['prefix' => 'water'], function() {
+
+  Route::resource('water', 'Water\LocationController')->middleware('auth');
+  Route::resource('unit', 'Water\UnitPriceController')->middleware('auth');
+  Route::resource('meter', 'Water\MeterController')->middleware('auth');
+  Route::resource('customer', 'Water\CustomerController')->middleware('auth');
+  Route::resource('daily', 'Water\DailyUnitController')->middleware('auth');
+
+});
+
+Route::resource('student', 'StudentController')->middleware('auth');
+Route::get('invoice_general','StudentController@general')->name('student.general')->middleware('auth');
+Route::get('fees_collection','StudentController@payment')->name('student.payment')->middleware('auth');
+Route::get('fees_collection/{id}/action','StudentController@action')->name('student.action')->middleware('auth');
+Route::post('store_payment','StudentController@store_payment')->name('student.store_payment')->middleware('auth');
+Route::get('fees_collection_list','StudentController@list')->name('student.list')->middleware('auth');
+Route::get('fees_collection_list/{student_payment_id}/fee_payment','StudentController@fee_payment')->name('student.fee_payment')->middleware('auth');
+Route::get('invoice_general/{id}/invoice','StudentController@invoice')->name('student.invoice')->middleware('auth');
+Route::resource('school', 'SchoolController')->middleware('auth');
 
 
 //my rooot
@@ -458,6 +481,17 @@ Route::group(['prefix' => 'accounting'], function () {
     Route::post('save_reconcile', 'AccountingController@save_reconcile')->name('reconcile.save')->middleware('auth');
 });
 
+
+//ROUTE FOR PARISH
+
+Route::group(['prefix' => 'parish'], function() {
+
+  Route::resource('community', 'Parish\CommunityController')->middleware('auth');
+  Route::resource('contribution', 'Parish\ContributionController')->middleware('auth');
+  Route::resource('member', 'Parish\ParishMemberController')->middleware('auth');
+
+
+}  );
 
 //route for payroll
 Route::group(['prefix' => 'payroll'], function () {
