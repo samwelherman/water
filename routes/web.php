@@ -70,6 +70,7 @@ Route::resource('school', 'SchoolController')->middleware('auth');
 //my rooot
 
 //cards management 
+
 Route::resource('manage_cards', 'Cards\ManageCardsController');
 Route::resource('card_deposit', 'Cards\DepositController');
 Route::resource('member_card_deposit', 'Cards\MemberDepositController'); 

@@ -18,6 +18,8 @@ class CreateCustomersTable extends Migration
             $table->string('name');
             $table->string('phoneNo');
             $table->string('location');
+            $table->integer('card_id');
+            $table->integer('status');
             $table->timestamps();
         });
     }

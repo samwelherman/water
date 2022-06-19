@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Cards;
 use App\Http\Controllers\Controller;
 
 use App\Models\Cards\Cards;
+use App\Models\Cards\CardAssignment;
+use App\Models\Water\Customer;
 use App\Models\Accounting\GroupAccount;
 use App\Models\Accounting\ClassAccount;
 use App\Models\Accounting\AccountCodes;
@@ -44,8 +46,8 @@ class ManageCardsController extends Controller
     public function create()
     {
        
-       $group_account = GroupAccount::all();
-        return view('accounting.account_codes.create', compact('group_account'));
+       $customer = Customer::all()->where('status',1);
+        return view('cards.assign_cards', compact('customer'));
     }
 
     /**
@@ -71,6 +73,7 @@ class ManageCardsController extends Controller
                 $data['reference_no'] = "DCG-V-".sprintf('%04d',$reference_no);
                 
                 $data['type'] = 2;
+                $data['status'] = 1;
                 $data['added_by'] = auth()->user()->id;
                 Cards::create($data);
             }
@@ -132,6 +135,36 @@ class ManageCardsController extends Controller
         
         //Flash::success(trans('general.successfully_deleted'));
         return redirect(route('manage_cards.index'));
+    }
+
+
+    public function assignCard($id){
+
+        $card = Cards::where('status',1)->get()->first();
+        if(!empty($card))
+        $card_id = $card->id;
+        $visitor_id = $id;
+
+        if(isset($card_id)){
+            $data['member_id'] = $visitor_id;
+            $data['cards_id'] = $card_id;
+            $data['added_by'] = auth()->user()->id;
+
+            $assignment  = CardAssignment::create($data);
+         }else{
+
+            return redirect()->back()->with(['error'=>'No Card available']);
+         }
+        if(!empty($assignment->id) && $assignment->id > 0){
+            Cards::where('id',$card_id)->update(['status'=>2,'owner_id'=>$visitor_id]);
+            Customer::find($visitor_id)->update(['status'=>1,'card_id'=>$card_id]);
+
+        }
+
+      
+        return redirect()->back()->with(['success'=>'Card assigned successfull']);
+
+
     }
 
 
