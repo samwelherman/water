@@ -18,6 +18,7 @@ class CreateTokensTable extends Migration
             $table->string('cardNo');
             $table->decimal('amount', 12, 2);
             $table->dateTime('tokenDate');
+            $table->string('token');
             $table->timestamps();
         });
     }

@@ -16,5 +16,6 @@ class token extends Model
         'cardNo',
         'amount',
         'tokenDate',
+        'token',
     ];
 }

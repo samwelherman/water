@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Token;
 use App\Http\Controllers\Controller;
 use App\Models\Token\TestToken;
 use Illuminate\Http\Request;
+use App\Models\Water\Customer;
+use App\Models\Water\UnitPrice;
 
 class TestTokenController extends Controller
 {
@@ -44,6 +46,17 @@ class TestTokenController extends Controller
             'token' => 'required',
             
         ]);
+
+        $cardno =  substr(request('token'),-12,4);
+        $third_blok =  substr(request('token'),0,1).substr(request('token'),0,2).substr(request('token'),0,3 ).substr(request('token'),0,12);
+
+        $cardID = sprintf('%00d',substr(request('token'),-4,4));
+        $customer = Customer::where('card_id',$cardID)->value('name');
+
+        
+        $unit = substr(request('token'),-8,4);
+        $unitprice = UnitPrice::all()->first()->price;
+        $amount = $unitprice * $unit;
 
         $tests = new TestToken();
 

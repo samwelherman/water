@@ -14,5 +14,9 @@ class TestToken extends Model
 
     protected $fillable = [
         'token',
+        'username',
+        'cardNo',
+        'Unit',
+        'amount',
     ];
 }

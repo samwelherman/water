@@ -52,6 +52,7 @@
             </li>
             @endcan
             @can('manage-cotton')
+            <!--
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="command"></i><span>Reports</span></a>
@@ -64,7 +65,7 @@
                     @endcan
                   
                 </ul>
-            </li>
+            </li> -->
             @endcan
 
              @can('manage-cotton')
@@ -79,7 +80,7 @@
                     <li><a class="nav-link" href="{{url('token/token')}}">Token Generation</a></li>
                     @endcan
                     @can('view-stock-report')
-                    <li><a class="nav-link" href="{{url('token/test')}}">Token Testing</a></li>
+                    <li><a class="nav-link" href="{{url('token/tokenTest')}}">Token Testing</a></li>
                     @endcan
                 </ul>
             </li>

@@ -16,6 +16,10 @@ class CreateTestTokensTable extends Migration
         Schema::create('test_tokens', function (Blueprint $table) {
             $table->id();
             $table->string('token');
+            $table->string('username');
+            $table->string('cardNo');
+            $table->string('Unit');
+            $table->string('amount');
             $table->timestamps();
         });
     }
