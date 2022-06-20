@@ -25,7 +25,8 @@
                   
                     <li><a class="nav-link" href="{{url('manage_cards')}}">Card Generetor</a></li>
                     <li><a class="nav-link" href="{{route('manage_cards.create')}}">Card Assignment</a></li>
-                    <li><a class="nav-link" href="{{url('manage_cards')}}">Card Management</a></li>
+                    <li><a class="nav-link" href="{{route('card.manage')}}">Card Management</a></li>
+                    <li><a class="nav-link" href="{{route('customer.list')}}">Customer List</a></li>
                  
                 </ul>
             </li>

@@ -48,11 +48,7 @@
                                                    <td>{{$row->status}}</td>
                                                   
                                                    <td><div class="form-inline">
-                                                <div class = "input-group"> 
-                                                    <a href="#"  class="btn btn-outline-success btn-xs" title="View"  data-toggle="modal" data-target="#appFormModal"  
-                                                    data-id="{{ $row->id }}" data-type="template"   onclick="model({{ $row->id }},'template')">
-                                                  <i class="fa fa-eye"></i></a>                                                             
-                                                </div>&nbsp    
+                                                  
                                                 <div class = "input-group"> 
                                             <a href="{{ route('manage_cards.edit', $row->id)}}" class="btn btn-outline-primary btn-xs" title="Edit"><i class="fa fa-edit"></i></a> 
                                         </div>&nbsp
@@ -61,6 +57,14 @@
             {{ Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-outline-danger  btn-xs ', 'title' => 'Delete', 'onclick' => "return confirm('Are you sure?')"]) }}
                    {{ Form::close() }}
                              </div>
+                             <div class="btn-group">
+        <button class="btn btn-xs btn-success dropdown-toggle" data-toggle="dropdown">Change<span class="caret"></span></button>
+        <ul class="dropdown-menu animated zoomIn">
+         <li class="nav-item"><a  class="nav-link" title="Edit" class="discount"  href="{{ route('customer.assignCard', $row->id)}}"  >Block</a></li>
+
+         <li class="nav-item"><a  class="nav-link" title="Edit" class="discount"  href="{{ route('customer.assignCard', $row->id)}}"  >Assign Card</a></li>
+          
+                          </ul></div>
                              </div></td>      
                                                                
                                       </tr>

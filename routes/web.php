@@ -56,6 +56,7 @@ Route::group(['prefix' => 'water'], function() {
 
 });
 
+
 Route::resource('student', 'StudentController')->middleware('auth');
 Route::get('invoice_general','StudentController@general')->name('student.general')->middleware('auth');
 Route::get('fees_collection','StudentController@payment')->name('student.payment')->middleware('auth');
@@ -75,6 +76,10 @@ Route::resource('manage_cards', 'Cards\ManageCardsController');
 Route::resource('card_deposit', 'Cards\DepositController');
 Route::resource('member_card_deposit', 'Cards\MemberDepositController'); 
 Route::resource('manage_member', 'Members\ManageMemberController');
+Route::get('list/', 'Cards\ManageCardsController@list')->name('customer.list');
+Route::get('manage_card/', 'Cards\ManageCardsController@manageCard')->name('card.manage');
+Route::get('assignCard/{id}', 'Cards\ManageCardsController@assignCard')->name('customer.assignCard');
+
 
 
 // start farming routes

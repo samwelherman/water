@@ -19,6 +19,7 @@ class CreateCardsTable extends Migration
             $table->string('status');
             $table->integer('type');
             $table->integer('added_by');
+            $table->integer('owner_id');
             $table->timestamps();
             
         });

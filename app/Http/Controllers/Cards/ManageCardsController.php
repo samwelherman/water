@@ -46,9 +46,21 @@ class ManageCardsController extends Controller
     public function create()
     {
        
-       $customer = Customer::all()->where('status',1);
-        return view('cards.assign_cards', compact('customer'));
+       $customer = Customer::all()->where('status',0);
+        
+        
+       return view('cards.assign_cards', compact('customer'));
     }
+
+
+    public function list()
+    {
+       
+       $customer = Customer::all()->where('status',1);
+        
+        return view('cards.client_list', compact('customer'));
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -70,7 +82,7 @@ class ManageCardsController extends Controller
                     $reference_no = 1;
                 }
                 
-                $data['reference_no'] = "DCG-V-".sprintf('%04d',$reference_no);
+                $data['reference_no'] = "2902266".sprintf('%04d',$reference_no);
                 
                 $data['type'] = 2;
                 $data['status'] = 1;
@@ -100,6 +112,14 @@ class ManageCardsController extends Controller
 
 
        return view('cards.manage_cards',compact('data','id'));
+    }
+
+    public function manageCard(){
+        $cards= Cards::all();
+
+
+
+        return view('cards.madify_cards',compact('cards'));
     }
 
     /**
@@ -162,7 +182,7 @@ class ManageCardsController extends Controller
         }
 
       
-        return redirect()->back()->with(['success'=>'Card assigned successfull']);
+        return redirect(route('customer.list'))->with(['success'=>'Card assigned successfull']);
 
 
     }

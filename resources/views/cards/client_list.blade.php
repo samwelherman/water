@@ -9,19 +9,19 @@
             <div class="col-12 col-sm-12 col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Manage Cards</h4>
+                        <h4>Assign Cards</h4>
                     </div>
                     <div class="card-body">
                         <!-- Tabs within a box -->
                         <ul class="nav nav-tabs">
                             <li class="nav-item"><a
                                     class="nav-link @if(empty($id)) active show @endif" href="#home2"
-                                    data-toggle="tab">Card List</a>
+                                    data-toggle="tab">Client List</a>
                             </li>
-                            
+                            <!--
                             <li class="nav-item"><a class="nav-link @if(!empty($id)) active show @endif"
-                                    href="#profile2" data-toggle="tab">Create New Cards</a></li>
- </ul>
+                                    href="#profile2" data-toggle="tab">Create New Client</a></li>
+--> </ul>
                         <div class="tab-content tab-bordered">
                             <!-- ************** general *************-->
                             <div class="tab-pane fade @if(empty($id)) active show @endif" id="home2">
@@ -31,37 +31,25 @@
                                         <thead>
                                             <tr>
                                                 <th >#</th>
-                                                <th>Card  No</th>
-                                                <th>Status</th>
-                                                
+                                                <th>Client Name</th>
+                                                <th>Client Location Name</th>
+                                                <th>Client Phone number</th>
+                                                <th>Client Card number</th>
                                            
-                                                <th class="col-sm-3">Action</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
                                        
-                                            @if(!@empty($cards))
-                                              @foreach ($cards as $row)
+                                            @if(!@empty($customer))
+                                              @foreach ($customer as $row)
                                                 <tr class="gradeA even" role="row">
                                                   <th>{{ $loop->iteration }}</th>
-                                                   <td>{{$row->reference_no}}</td>
-                                                   <td>{{$row->status}}</td>
-                                                  
-                                                   <td><div class="form-inline">
-                                                <div class = "input-group"> 
-                                                    <a href="#"  class="btn btn-outline-success btn-xs" title="View"  data-toggle="modal" data-target="#appFormModal"  
-                                                    data-id="{{ $row->id }}" data-type="template"   onclick="model({{ $row->id }},'template')">
-                                                  <i class="fa fa-eye"></i></a>                                                             
-                                                </div>&nbsp    
-                                                <div class = "input-group"> 
-                                            <a href="{{ route('manage_cards.edit', $row->id)}}" class="btn btn-outline-primary btn-xs" title="Edit"><i class="fa fa-edit"></i></a> 
-                                        </div>&nbsp
-                                  <div class = "input-group"> 
-            {!! Form::open(['route' => ['manage_cards.destroy',$row->id], 'method' => 'delete']) !!}                                                   
-            {{ Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-outline-danger  btn-xs ', 'title' => 'Delete', 'onclick' => "return confirm('Are you sure?')"]) }}
-                   {{ Form::close() }}
-                             </div>
-                             </div></td>      
+                                                   <td>{{$row->name}}</td>
+                                                   <td>{{$row->location}}</td>
+                                                   <td>{{$row->phoneNo}}</td>
+                                                   <td>{{ App\Models\Cards\Cards::find($row->card_id)->reference_no}}</td>
+                                                   <     
                                                                
                                       </tr>
                                     @endforeach
@@ -76,26 +64,40 @@
                             <div class="tab-pane fade @if(!empty($id)) active show @endif" id="profile2">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>Create Cards</h5>
+                                        <h5>Create Client</h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-sm-12 ">
                                                 
-                                                {{ Form::open(['route' => 'manage_cards.store','role'=>'form','enctype'=>'multipart/form-data']) }}
+                                                {{ Form::open(['route' => 'customer.store','role'=>'form','enctype'=>'multipart/form-data']) }}
                                                 @method('POST')
 
                                                 <div class="form-group row">
-                                                    <label class="col-lg-2 col-form-label">Number of Cards</label>
+                                                    <label class="col-lg-2 col-form-label">Client Name</label>
                                                     <div class="col-lg-8">
-                                                        <input type="number" name="card_number" required
-                                                            placeholder=""
+                                                        <input type="text" name="name" required
+                                                            placeholder="Enter Client Name"
                                                             class="form-control">
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group row">
+                                                    <label class="col-lg-2 col-form-label">Client Location Name </label>
+                                                    <div class="col-lg-8">
+                                                
+                                                    </div>
+                                                </div>  
 
 
+                                                <div class="form-group row">
+                                                    <label class="col-lg-2 col-form-label">Client Phone number</label>
+                                                    <div class="col-lg-8">
+                                                        <input type="tel" name="phoneNo" required
+                                                            placeholder="Enter Client Phone number"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
 
 
                                                  <div class="form-group row">

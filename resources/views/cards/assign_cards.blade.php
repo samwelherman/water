@@ -61,7 +61,13 @@
             {{ Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-outline-danger  btn-xs ', 'title' => 'Delete', 'onclick' => "return confirm('Are you sure?')"]) }}
                    {{ Form::close() }}
                              </div>
-                             </div></td>      
+                             </div>
+                             <div class="btn-group">
+        <button class="btn btn-xs btn-success dropdown-toggle" data-toggle="dropdown">Change<span class="caret"></span></button>
+        <ul class="dropdown-menu animated zoomIn">
+         <li class="nav-item"><a  class="nav-link" title="Edit" class="discount"  href="{{ route('customer.assignCard', $row->id)}}"  >Assign Card</a></li>
+          
+                          </ul></div></td>      
                                                                
                                       </tr>
                                     @endforeach
