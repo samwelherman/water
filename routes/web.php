@@ -46,7 +46,7 @@ Route::group(['prefix'=>'farmer'],function()
 
 //raja roots
 
-Route::group(['prefix' => 'water'], function() {
+
 
   Route::resource('water', 'Water\LocationController')->middleware('auth');
   Route::resource('unit', 'Water\UnitPriceController')->middleware('auth');
@@ -54,8 +54,15 @@ Route::group(['prefix' => 'water'], function() {
   Route::resource('customer', 'Water\CustomerController')->middleware('auth');
   Route::resource('daily', 'Water\DailyUnitController')->middleware('auth');
 
-});
 
+
+Route::group(['prefix' => 'token'], function() {
+
+  Route::resource('block', 'Token\BlockController')->middleware('auth');
+  Route::resource('token', 'Token\TokenController')->middleware('auth');
+  Route::resource('tokenTest', 'Token\TestTokenController')->middleware('auth');
+
+});
 
 Route::resource('student', 'StudentController')->middleware('auth');
 Route::get('invoice_general','StudentController@general')->name('student.general')->middleware('auth');
