@@ -32,6 +32,7 @@
                                                 <th >#</th>
                                                 <th>Token</th>
                                                 <th>Meter Card Number According To Token</th>
+                                                <th>Unit According To Token</th>
                                                 <th>Amount Paid According To Token</th>
                                            
                                                 <th class="col-sm-3">Action</th>
@@ -44,6 +45,7 @@
                                                 <tr class="gradeA even" role="row">
                                                   <th>{{ $loop->iteration }}</th>
                                                    <td>{{$row->token}}</td>
+                                                   <td>Units</td>
                                                    <td>Card Number</td>
                                                    <td>Amount Paid</td>
                                                    <td><div class="form-inline">
