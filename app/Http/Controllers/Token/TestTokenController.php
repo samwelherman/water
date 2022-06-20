@@ -47,8 +47,8 @@ class TestTokenController extends Controller
             
         ]);
 
-        $cardno =  substr(request('token'),-12,4);
-        $third_blok =  substr(request('token'),0,1).substr(request('token'),0,2).substr(request('token'),0,3 ).substr(request('token'),0,12);
+        $cardno =  "2902266".substr(request('token'),-12,4);
+        
 
         $cardID = sprintf('%00d',substr(request('token'),-4,4));
         $customer = Customer::where('card_id',$cardID)->value('name');
@@ -61,6 +61,11 @@ class TestTokenController extends Controller
         $tests = new TestToken();
 
         $tests->token = request('token');
+
+        $tests->username = $customer;
+        $tests->cardNo = $cardno;
+        $tests->Unit = $unit;
+        $tests->amount = $amount;
 
 
         $tests->save();

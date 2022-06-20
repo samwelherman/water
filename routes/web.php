@@ -47,14 +47,14 @@ Route::group(['prefix'=>'farmer'],function()
 //raja roots
 
 
-
+Route::group(['prefix' => 'water'], function() {
   Route::resource('water', 'Water\LocationController')->middleware('auth');
   Route::resource('unit', 'Water\UnitPriceController')->middleware('auth');
   Route::resource('meter', 'Water\MeterController')->middleware('auth');
   Route::resource('customer', 'Water\CustomerController')->middleware('auth');
   Route::resource('daily', 'Water\DailyUnitController')->middleware('auth');
 
-
+});
 
 Route::group(['prefix' => 'token'], function() {
 

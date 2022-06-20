@@ -53,10 +53,10 @@ class TokenController extends Controller
         $cards_id = Cards::where('reference_no',$request->cardNo)->value('id');
         $price = UnitPrice::all()->first()->price;
 
-        $blok1 =  substr(request('cardNo'),-4,4);
-        $block2 = sprintf('%04d',$request('amount')/$price);
+        $block1 =  substr(request('cardNo'),-4,4);
+        $block2 = sprintf('%04d',request('amount')/$price);
         $block3 = sprintf('%04d',$cards_id);
-        $token = $blok1.$blok2.$blok3;
+        $token = $block1.$block2.$block3;
 
         $tokens = new token();
 

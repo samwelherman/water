@@ -30,7 +30,7 @@
                                         <thead>
                                             <tr>
                                                 <th >#</th>
-                                                <th>Meter Card Number</th>
+                                                <th>Card Number</th>
                                                 <th>Amount Paid</th>
                                                 <th>Token</th>
                                                 <th>Token Generated Date and Time</th>
@@ -46,7 +46,7 @@
                                                   <th>{{ $loop->iteration }}</th>
                                                    <td>{{$row->cardNo}}</td>
                                                    <td>{{$row->amount}}</td>
-                                                   <td>Meter Token Generated</td>
+                                                   <td>{{$row->token}}</td>
                                                    <td>{{$row->tokenDate}}</td>
                                                    <td><div class="form-inline">
                                                 <div class = "input-group"> 

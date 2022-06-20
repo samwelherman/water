@@ -21,12 +21,20 @@
                             <td><strong><?php echo $test->token; ?></strong></td>
                         </tr>
                          <tr>
-                            <th>Meter Card Number According To Token:</th>
-                            <td><strong>Meter Card Number</strong></td>
+                            <th> Card Number According To Token:</th>
+                            <td><strong><?php echo $test->cardNo; ?></strong></td>
                         </tr>
                          <tr>
                             <th>Amount Paid According To Token:</th>
-                            <td><strong>Meter Token Generated</strong></td>
+                            <td><strong><?php echo $test->amount; ?></strong></td>
+                        </tr>
+                         <tr>
+                            <th>Unit According To Token:</th>
+                            <td><strong><?php echo $test->unit; ?></strong></td>
+                        </tr>
+                        <tr>
+                            <th>Customer  According To Token:</th>
+                            <td><strong><?php echo $test->username; ?></strong></td>
                         </tr>
                     </table>
                 </div>

@@ -17,7 +17,7 @@
                 <div class="card-body table-responsive">
                     <table class="table table-bordered table-striped bg-light">
                         <tr>
-                            <th>Meter Card Number:</th>
+                            <th> Card Number:</th>
                             <td><strong><?php echo $token->cardNo; ?></strong></td>
                         </tr>
                          <tr>
@@ -26,7 +26,7 @@
                         </tr>
                          <tr>
                             <th>Token:</th>
-                            <td><strong>Meter Token Generated</strong></td>
+                            <td><strong><?php echo $token->token; ?></strong></td>
                         </tr>
                         <tr>
                             <th>Token Generated Date and Time:</th>

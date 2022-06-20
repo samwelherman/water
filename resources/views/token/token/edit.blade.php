@@ -33,7 +33,7 @@
                                             {{ Form::model($block, array('route' => array('block.update', $block->id),'role'=>'form','enctype'=>'multipart/form-data' ,'method' => 'PUT')) }}
                                               
                                                 <div class="form-group row">
-                                                    <label class="col-lg-2 col-form-label">Meter Card Number</label>
+                                                    <label class="col-lg-2 col-form-label">Card Number</label>
                                                     <div class="col-lg-8">
                                                         <input type="text" name="cardNo" required
                                                             value="{{  old('cardNo', $token->cardNo) }}"

@@ -31,8 +31,9 @@
                                             <tr>
                                                 <th >#</th>
                                                 <th>Token</th>
-                                                <th>Meter Card Number According To Token</th>
+                                                <th>Card Number According To Token</th>
                                                 <th>Unit According To Token</th>
+                                                <th>Customer name According To Token</th>
                                                 <th>Amount Paid According To Token</th>
                                            
                                                 <th class="col-sm-3">Action</th>
@@ -45,9 +46,10 @@
                                                 <tr class="gradeA even" role="row">
                                                   <th>{{ $loop->iteration }}</th>
                                                    <td>{{$row->token}}</td>
-                                                   <td>Units</td>
-                                                   <td>Card Number</td>
-                                                   <td>Amount Paid</td>
+                                                   <td>{{$row->cardNo}}</td>
+                                                   <td>{{$row->Unit}}</td>
+                                                   <td>{{$row->username}}</td>
+                                                   <td>{{$row->amount}}</td>
                                                    <td><div class="form-inline">
                                                 <div class = "input-group"> 
                                                     <a href="#"  class="btn btn-outline-success btn-xs" title="View"  data-toggle="modal" data-target="#appFormModal"  
