@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h2 class="modal-title" id="formModal" >Client Details</h2>
+            <h2 class="modal-title" id="formModal" >Block Definition Details</h2>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -12,21 +12,25 @@
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                 <div class="card-header">
-                    <h6>Client Information View</h6>
+                    <h6>Block Definition Information View</h6>
                 </div>
                 <div class="card-body table-responsive">
                     <table class="table table-bordered table-striped bg-light">
                         <tr>
-                            <th>Client Name:</th>
-                            <td><strong><?php echo $customer->name; ?></strong></td>
+                            <th>Block 1 Definition:</th>
+                            <td><strong><?php echo $block->block1; ?></strong></td>
                         </tr>
                          <tr>
-                            <th>Client Location Name:</th>
-                            <td><strong><?php echo $customer->location; ?></strong></td>
+                            <th>Block 2 Definition:</th>
+                            <td><strong><?php echo $block->block2; ?></strong></td>
                         </tr>
                          <tr>
-                            <th>Client Phone number:</th>
-                            <td><strong><?php echo $customer->phoneNo; ?></strong></td>
+                            <th>Block 3 Definition:</th>
+                            <td><strong><?php echo $block->block3; ?></strong></td>
+                        </tr>
+                        <tr>
+                            <th>Block 4 Definition:</th>
+                            <td><strong><?php echo $block->block4; ?></strong></td>
                         </tr>
                     </table>
                 </div>

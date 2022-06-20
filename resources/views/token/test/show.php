@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h2 class="modal-title" id="formModal" >Client Details</h2>
+            <h2 class="modal-title" id="formModal" >Virtual Token Testing Details</h2>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -12,21 +12,21 @@
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                 <div class="card-header">
-                    <h6>Client Information View</h6>
+                    <h6>Virtual Token Testing Information View</h6>
                 </div>
                 <div class="card-body table-responsive">
                     <table class="table table-bordered table-striped bg-light">
                         <tr>
-                            <th>Client Name:</th>
-                            <td><strong><?php echo $customer->name; ?></strong></td>
+                            <th>Toke:</th>
+                            <td><strong><?php echo $test->token; ?></strong></td>
                         </tr>
                          <tr>
-                            <th>Client Location Name:</th>
-                            <td><strong><?php echo $customer->location; ?></strong></td>
+                            <th>Meter Card Number According To Token:</th>
+                            <td><strong>Meter Card Number</strong></td>
                         </tr>
                          <tr>
-                            <th>Client Phone number:</th>
-                            <td><strong><?php echo $customer->phoneNo; ?></strong></td>
+                            <th>Amount Paid According To Token:</th>
+                            <td><strong>Meter Token Generated</strong></td>
                         </tr>
                     </table>
                 </div>

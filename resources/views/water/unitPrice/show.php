@@ -9,7 +9,7 @@
        
 <div class="modal-body">
 <div class="row">
-<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                 <div class="card-header">
                     <h6>Unit Price Definition View</h6>

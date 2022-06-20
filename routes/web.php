@@ -56,6 +56,14 @@ Route::group(['prefix' => 'water'], function() {
 
 });
 
+Route::group(['prefix' => 'token'], function() {
+
+  Route::resource('block', 'Token\BlockController')->middleware('auth');
+  Route::resource('token', 'Token\TokenController')->middleware('auth');
+  Route::resource('tokenTest', 'Token\TestTokenController')->middleware('auth');
+
+});
+
 Route::resource('student', 'StudentController')->middleware('auth');
 Route::get('invoice_general','StudentController@general')->name('student.general')->middleware('auth');
 Route::get('fees_collection','StudentController@payment')->name('student.payment')->middleware('auth');
