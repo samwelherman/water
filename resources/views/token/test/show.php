@@ -17,7 +17,7 @@
                 <div class="card-body table-responsive">
                     <table class="table table-bordered table-striped bg-light">
                         <tr>
-                            <th>Toke:</th>
+                            <th>Token:</th>
                             <td><strong><?php echo $test->token; ?></strong></td>
                         </tr>
                          <tr>

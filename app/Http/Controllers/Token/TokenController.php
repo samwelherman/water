@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\Models\Water\UnitPrice;
 use App\Models\Cards\Cards;
 use App\Models\Water\Customer;
+use App\Services\Sms;
 
 class TokenController extends Controller
 {
@@ -41,7 +42,7 @@ class TokenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Sms $sms)
     {
         //
          $request->validate([
@@ -49,7 +50,9 @@ class TokenController extends Controller
             'amount' => 'required',
             
         ]);
-       
+
+        
+        
         $cards_id = Cards::where('reference_no',$request->cardNo)->value('id');
         $price = UnitPrice::all()->first()->price;
 
@@ -70,6 +73,26 @@ class TokenController extends Controller
 
 
         $tokens->save();
+
+
+        $number = '0682756516';
+        $message = $token;
+        $device = 1;
+        $schedule = null;
+        $isMMS = false;
+        $attachments = null;
+        $prioritize = false;
+
+       
+        $sms->sendSingleMessage(
+            $number,
+            $message.
+            $device,
+            $schedule,
+            $isMMS,
+            $attachments,
+            $prioritize
+        );
 
     
         return redirect()->route('token.index')->with('success', 'Saved Successfully');
